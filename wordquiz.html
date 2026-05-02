@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <%  
+  let randomIndex = parseInt(Math.random()*parts.length);
+  let chosenWord = <chosenWords [randomIndex]
+  let [correctWord,correctPart, correctDef] = chosenWord.split('\t');
+  %>
+  <h1>Leah's Word Quiz</h1>
+  <h2>Word - Part of Speech </h2>
+  <ol> 
+    <% for (currentWord of chosenWords) {
+      // loop through each word, show definition 
+      let [word, part, def] = currentWord.split('\t');
+    %>
+      <li>
+        <label>
+          <input type="radio" name="word" value="<%= part %>">
+          <%= def %>  
+        </label>
+      </li>
+    <% } %>
+  </ol>
+</body>
+</html>

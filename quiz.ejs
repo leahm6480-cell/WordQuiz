@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Word Quiz</title>
+</head>
+
+<body>
+
+  <h1>Leah's Word Quiz</h1>
+
+  <h2>
+    What is the definition of:
+    <strong><%= chosenWords[0].word %></strong>
+  </h2>
+
+  <form method="POST" action="/">
+
+    <!-- correct answer -->
+    <input type="hidden" name="correctAnswer" value="<%= chosenWords[0].def %>">
+
+    <ol>
+
+      <% chosenWords.forEach(function(currentWord) { %>
+
+        <li>
+          <label>
+
+            <input type="radio" name="answer" value="<%= currentWord.def %>" required>
+
+            <span style="
+              color: <%= userAnswer
+                ? (currentWord.def === userAnswer ? (isCorrect ? 'green' : 'red') : 'black')
+                : 'black' %>;
+            ">
+              <%= currentWord.def %>
+            </span>
+
+          </label>
+        </li>
+
+      <% }) %>
+
+    </ol>
+
+    <button type="submit">Submit</button>
+
+  </form>
+
+</body>
+</html>
