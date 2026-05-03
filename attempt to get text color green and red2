@@ -1,0 +1,72 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .correct{
+            color:green 
+        }
+    }
+        .incorrect {
+            color: red;
+        }
+    </style>
+  <title>Word Quiz</title>
+</head>
+
+<body>
+
+<h1>Word Quiz!</h1>
+
+<h2>
+    <%= correctWord %> - <%= correctPart %>
+</h2>
+
+<form action="/" method="post">
+
+    <input type="hidden" name="correctDef" value="<%= correctDef %>">
+    <input type="hidden" name="correctWord" value="<%= correctWord %>">
+    <input type="hidden" name="correctPart" value="<%= correctPart %>">
+
+    <input type="hidden" name="chosenWords" value="<%= chosenWords.join('\n') %>">
+
+    <ol>
+
+        <% for (currentWord of chosenWords) {
+            let [word, part, def] = currentWord.split('\t');
+        %>
+
+        <li>
+            <label>
+
+                <input type="radio" name="userChoice" value="<%= def %>" required>
+
+                <span style="
+                    color:
+                    <% if (!userChoice) { %>
+                        black
+                    <% } else if (def === userChoice && userChoice === correctDef) { %>
+                        green
+                    <% } else if (def === userChoice && userChoice !== correctDef) { %>
+                        red
+                    <% } else if (def === correctDef) { %>
+                        green
+                    <% } else { %>
+                        black
+                    <% } %>;
+                ">
+                    <%= def %>
+                </span>
+
+            </label>
+        </li>
+
+        <% } %>
+
+    </ol>
+
+    <input type="submit" value="Submit Answer!">
+
+</form>
+ <input type = "hidden" name = "score" value =<%= score 0%
+</body>
+</html>
